@@ -1,18 +1,11 @@
-# Import necessary libraries: os, json, getpass, string, random, base64 encoding and decoding,
-# AES encryption from Crypto.Cipher, random bytes from Crypto.Random, scrypt key generation from Crypto.Protocol.KDF,
-# padding/unpadding from Crypto.Util.Padding, and pyperclip for clipboard functionality
-import os
-import json
-import getpass
-import string
-import random
+import os, json, getpass, string, random
 from Crypto.Cipher import AES
 from Crypto.Random import get_random_bytes
 from Crypto.Protocol.KDF import scrypt
 from Crypto.Util.Padding import pad, unpad
 import pyperclip
 
-# Define file name for password storage
+# Filename of password vault
 PASSWORD_FILE = 'passwords.json'
 
 
@@ -21,7 +14,7 @@ def encrypt_data(data, password, salt):
     key = scrypt(password, salt, 32, N=2**14, r=8, p=1)  # Derive the key using scrypt key derivation function
     cipher = AES.new(key, AES.MODE_CBC)  # Create an AES cipher with Cipher Block Chaining (CBC) mode
     ciphertext = cipher.encrypt(pad(data, AES.block_size))  # Pad the plain text, then encrypt it
-    return cipher.iv + ciphertext # concatenate the initialization vector (IV) and ciphertext
+    return cipher.iv + ciphertext # Concatenates the initialization vector (IV) and ciphertext
 
 # Function to decrypt data using a password and a salt
 def decrypt_data(data, password, salt):
@@ -98,7 +91,7 @@ def main():
             username = input("Enter username: ")
             password = input("Enter password: ")
             add_password(passwords, account, username, password) # Adds password to password dict in memory
-            save_passwords(passwords, master_password) # Saves all passwords from password dict to .txt file, with new salt & encrypted with master password. 
+            save_passwords(passwords, master_password) # Saves all passwords from password dict to .json file, with new salt & encrypted with master password. 
             print(f"Password for {account} saved.")
 
         elif choice == 2:  # List passwords

@@ -1,10 +1,10 @@
 # Python Password Manager
 
-This application is a Post-Quantum Password Manager that allows users to store their credentials safely in an encrypted local .txt file (The vault).
+This application is a Post-Quantum Password Manager that allows users to store their credentials safely in an encrypted local .json file (The vault).
 
 The initial idea was to make it safe in a post-quantum world where certain encryption algorithms will become insecure.
 
-My understanding is that AES is a symetric encryption type, and therefor it is quantum secure if the key is long enough, in this application it is 256-bit - But to be honest I don't know if it actually is quantum secured.
+My understanding is that AES is a symetric encryption type, and therefor it is quantum secure if the key is long enough, in this application it is 256-bit - But to be honest I don't know if it actually is quantum secure.
 
 * The manager accepts a master password for encryption, you can then add or list passwords to/from the vault.
 * The application also has a function to generate a random password, of any desired length, and copies it to the clipboard.
