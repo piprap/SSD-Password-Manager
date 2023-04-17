@@ -7,7 +7,6 @@ import pyperclip
 
 # Filename of password vault
 PASSWORD_FILE = 'passwords.json'
-apikey = '34aac4c2-2524-451c-b58c-d9afdb0ef47a'
 
 
 # Function to encrypt data using a password and a salt
